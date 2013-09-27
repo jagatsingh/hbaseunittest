@@ -12,7 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SmokeTests
+public class SampleUnit
 {
 
 	@Before
@@ -35,7 +35,7 @@ public class SmokeTests
 		// Assert.fail("Couldn't load the homepage");
 
 		// Let's create a table
-		HBaseAdmin hbadmin = new HBaseAdmin(AllTests.getConfiguration());
+		HBaseAdmin hbadmin = new HBaseAdmin(BigSuiteTest.getConfiguration());
 
 		HTableDescriptor descriptor = new HTableDescriptor("newtable");
 		descriptor.addFamily(new HColumnDescriptor("f1"));
@@ -43,9 +43,9 @@ public class SmokeTests
 
 		hbadmin.close();
 
-		HTable htable = new HTable(AllTests.getConfiguration(), "newtable");
+		HTable htable = new HTable(BigSuiteTest.getConfiguration(), "newtable");
 
-		Put myPut = new Put();
+		Put myPut = new Put(Bytes.toBytes("rowkey1"));
 		myPut.add(Bytes.toBytes("f1"),
 				Bytes.toBytes("q1"),
 				Bytes.toBytes("myvalue"));

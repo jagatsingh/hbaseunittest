@@ -12,11 +12,11 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
 {
-		SmokeTests.class
+		SampleUnit.class
 })
-public class AllTests
+public class BigSuiteTest
 {
-	private static final Logger log = Logger.getLogger(AllTests.class);
+	private static final Logger log = Logger.getLogger(BigSuiteTest.class);
 	private static HBaseTestingUtility hbaseTestingUtility;
 
 	private static Configuration myConfiguration;
@@ -29,7 +29,7 @@ public class AllTests
 		Logger.getLogger("hbaseunittest").setLevel(Level.ALL);
 		hbaseTestingUtility.startMiniCluster();
 
-		AllTests.myConfiguration = hbaseTestingUtility.getConfiguration();
+		BigSuiteTest.myConfiguration = hbaseTestingUtility.getConfiguration();
 	}
 
 	@AfterClass
@@ -42,6 +42,6 @@ public class AllTests
 
 	public static Configuration getConfiguration()
 	{
-		return AllTests.myConfiguration;
+		return BigSuiteTest.myConfiguration;
 	}
 }
