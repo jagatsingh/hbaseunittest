@@ -24,6 +24,7 @@ public class BigSuiteTest
 	@BeforeClass
 	public static void setUpClass() throws Exception
 	{
+		log.info("Starting HBASE cluster");
 		hbaseTestingUtility = new HBaseTestingUtility();
 		Logger.getLogger("org.apache").setLevel(Level.WARN);
 		Logger.getLogger("hbaseunittest").setLevel(Level.ALL);
@@ -35,9 +36,10 @@ public class BigSuiteTest
 	@AfterClass
 	public static void tearDownClass() throws Exception
 	{
+		log.info("Tearing down");
 		hbaseTestingUtility.shutdownMiniCluster();
 
-		System.out.println("Done");
+		log.info("Done");
 	}
 
 	public static Configuration getConfiguration()
